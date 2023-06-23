@@ -47,16 +47,18 @@ function saludo(idioma) {
    // Si "idioma" es "ingles", devuelve "Hello!".
    // Si "idioma" no es ninguno de los anteriores o es `undefined` devuelve "Hola!".
    // Tu código:
-   if (idioma == "aleman") {
-      return "Guten Tag!";
-   } else if (idioma == "mandarin") {
-      return "Ni Hao!";
-   } else if (idioma == "ingles") {
-      return "Hello!";
-   } else {
+   switch (idioma) {
+      case "aleman":
+         return "Guten Tag!";
+      case "mandarin":
+         return "Ni Hao!";
+      case "ingles":
+         return "Hello!";
+      default:
       return "Hola!";
    }
 }
+
 
 function colors(color) {
    // La función recibe un color. Retornar el string correspondiente:
@@ -123,8 +125,8 @@ function fizzBuzz(num) {
    // Si "num" es divisible entre 3 y 5 (ambos), retorna "fizzbuzz".
    // De lo contrario, retorna false.
    // Tu código:
-   if (num % 3 === 0 && num % 5 === 0) {
-      return "fizzbuzz";
+   if (num % 3 === 0 && num % 5 === 0) { //Tiene que leer primero los dos casos y despues los casos por separados en caso de que no se cumpla.
+      return "fizzbuzz";                 //Si no, no llega a leerlo.
    } else if (num % 3 === 0) {
       return "fizz";
    } else if (num % 5 === 0) {
@@ -147,7 +149,8 @@ function operadoresLogicos(num1, num2, num3) {
    } else if (num1 < 0 || num2 < 0 || num3 < 0) {
       return "Hay negativos";
    } else if (num3 > num1 && num3 > num2) {
-      return (num3 + 1);
+      num3++;
+      return num3;
    } else if (num3 === 0 && num2 === 0 && num1 === 0) {
       return "Error";
    } else {
@@ -166,7 +169,7 @@ function esPrimo(num) {
       return false;
    }
   
-   for (var i = 2; i <= Math.sqrt(num); i++) {
+   for (var i = 2; i < num; i++) {
       if (num % i === 0) {
         return false;
       }
@@ -191,7 +194,8 @@ function tieneTresDigitos(num) {
    // Si el número recibido tiene tres dígitos retornar true.
    // Caso contrario, retornar false.
    // Tu código:
-   if (num > 99 && num < 1000) {
+   var numero = num.toString();
+   if (numero.length === 3) {
       return true;
    } else {
       return false;
